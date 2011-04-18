@@ -30,7 +30,7 @@ function MM_popupMsg(msg) { //v1.0
 		
 		<table border="0" cellpadding="0" cellspacing="0" width="950">
 		<tr>
-			<td><a href="./index.htm"><img src="image/logo.gif" border="0"></a></td>
+			<td><a href="./index.php"><img src="image/logo.gif" border="0"></a></td>
 			<td><script type="text/javascript">
 AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0','width','400','height','90','src','swf/index?route=1','quality','high','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','swf/index?route=1','wmode','transparent' ); //end AC code
 </script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="400" height="90">
@@ -53,7 +53,7 @@ AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/
 		</table>
 	
 		<map name="topmenumap">
-		  <area shape="rect" coords="31,19,111,28" href="index.htm" target="_self">
+		  <area shape="rect" coords="31,19,111,28" href="index.php" target="_self">
 		  <area shape="rect" coords="35,46,113,56" href="#">
 		</map>
 
