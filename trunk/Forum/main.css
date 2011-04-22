@@ -1,0 +1,79 @@
+BODY {FONT-SIZE: 14px; MARGIN: 30px}
+TD {FONT-SIZE: 14px}
+A:link {COLOR: #000088; TEXT-DECORATION: none}
+A:visited {COLOR: #000088; TEXT-DECORATION: none}
+A:hover {COLOR: #ff0000; TEXT-DECORATION: underline}
+A:active {COLOR: #000000; TEXT-DECORATION: none}
+#tbul{
+background:url(images/ball.gif) center left no-repeat;
+width:24px;
+border-left:1px #83B4F2 solid;
+border-top:1px #83B4F2 solid;
+border-bottom:1px #83B4F2 solid;
+}
+#tbum{
+width:728px;
+border-top:1px #83B4F2 solid;
+border-bottom:1px #83B4F2 solid;
+}
+#tbur{
+width:19px;
+border-right:1px #83B4F2 solid;
+border-top:1px #83B4F2 solid;
+border-bottom:1px #83B4F2 solid;
+}
+#tbml{
+border-left:1px #83B4F2 solid;
+}
+#tbmm{
+}
+#tbmr{
+width:19px;
+border-right:solid #83B4F2 1px;
+}
+#tbll{
+border-bottom:1px #83B4F2 solid;
+border-left:1px #83B4F2 solid;
+width:19px;
+}
+#tblm{
+border-bottom:1px #83B4F2 solid;
+}
+#tblr
+{background:url(images/coner.gif) bottom right no-repeat;
+border-top:1px #83B4F2 solid;
+border-left:1px #83B4F2 solid;
+width:19px;
+height:19px;
+}
+#authorn{
+font-size:12px;
+padding-bottom:4px;
+}
+#head{
+color:#0033FF;
+line-height:24px;
+vertical-align:middle;
+padding-top:2px;
+padding-left:3px;
+
+}
+#arttitle{
+color:#0000FF;
+font-size:14px;
+font-weight:bold;
+background:url(images/mainar.gif) top left no-repeat;
+padding-left:23px;
+padding-top:4px;
+padding-bottom:0px;
+}
+#content{
+padding: 9px 5px 5px 5px;
+font-size:15px;
+}
+#content_table
+{
+border:dotted 1px #83B4F2;
+border-left:solid 2px #83B4F2;
+width:670px;
+}
