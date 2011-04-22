@@ -1,3 +1,4 @@
+<!--#include file="connection.asp"-->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -9,6 +10,18 @@
 <!--
 .STYLE8 {color: #003300; font-size: 24pt; font-weight: bold; font-family: "黑体"; }
 .STYLE10 {color: #006600; font-size: 14; font-family: "黑体"; }
+	.word{
+	size:4px;
+	font-family:"楷体";}
+	.top{
+	vertical-align:top;}
+	.btn{
+	background-color:#CCFFCC;
+	width:130px;
+	height:30px;
+	}
+
+
 -->
 </style>
 <script src="../../Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
@@ -44,24 +57,24 @@ AC_FL_RunContent( 'codebase','http://fpdownload.macromedia.com/pub/shockwave/cab
 		</table>
 		
 		<map name="topmenumap">
-		  <area shape="rect" coords="32,18,112,27" href="../../index.htm" target="_self">
+		  <area shape="rect" coords="31,19,111,28" href="../../index.htm" target="_self">
 		  <area shape="rect" coords="35,46,113,56" href="#">
 		</map>
 	
 
 	
 		<table border="0" cellpadding="0" cellspacing="0" width="950"  >
-	  <tr>
+		<tr>
 			<td width="219" valign="top"  height="100%">
 			
 				<table border="0" cellpadding="0" cellspacing="0"  height="100%">
 				<tr>
 					<td><img src="image/menu_top.gif"></td></tr>
 				<tr>
-					<td><a href="index.htm"><img src="image/left_menu01.gif" border="0" ></a></td>
+					<td><a href="../qualif/index.htm"><img src="image/left_menu01.gif" border="0" ></a></td>
 				</tr>
 				<tr>
-					<td><a href="../courselib/index.htm"><img src="image/left_menu02.gif" border="0"  ></a></td>
+					<td><a href="index.htm"><img src="image/left_menu02.gif" border="0"  ></a></td>
 				</tr>
 				<tr>
 					<td><img src="image/left_menu03.gif" border="0"  ></td>
@@ -70,7 +83,7 @@ AC_FL_RunContent( 'codebase','http://fpdownload.macromedia.com/pub/shockwave/cab
 					<td><img src="image/left_menu04.gif" border="0"  ></td>
 				</tr>
 				<tr>
-					<td><img src="image/left_menu05.gif" border="0" ></td>
+					<td><a href="../qualif/index.htm"><img src="image/left_menu05.gif" border="0" ></a></td>
 				</tr>
 				<tr>
 					<td><img src="image/left_menu06.gif" border="0"  ></td></tr>
@@ -104,28 +117,82 @@ AC_FL_RunContent( 'codebase','http://fpdownload.macromedia.com/pub/shockwave/cab
 				<tr>
 				
 					<td width="731" align="center" valign="top">
-					<br>
-						<table>
-							<tr><td>&nbsp;</td></tr>
-							<tr>
-								<td>
-								<a href="doc/全国计算机等级考试 二级VB模拟试题1.doc"><font face="黑体" size="4">全国计算机等级考试 二级VB模拟试题1</font></a>
-								</td>
-							</tr>
-							<tr><td>&nbsp;</td></tr>
-							<tr>
-								<td>
-								<a href="doc/全国计算机等级考试 二级VB模拟试题2.doc"><font face="黑体" size="4">全国计算机等级考试 二级VB模拟试题2</font></a>
-								</td>
-							</tr>
-							<tr><td>&nbsp;</td></tr>
-							<tr>
-								<td>
-								<a href="doc/全国计算机等级考试 二级VB模拟试题3.doc"><font face="黑体" size="4">全国计算机等级考试 二级VB模拟试题3</font></a>
-								</td>
-							</tr>
-						</table>
-					</td>
+					<br><%
+			dim sql,i,num
+	sql="select * from chooseOne"
+	rs.open sql,conn,1,1
+	num=1
+	
+	'显示题库：
+	response.Write "<form action='' method='post'>"
+	response.write "<table border=0 cellpadding='3' cellspacing='3' align='center'>"
+	Do While Not rs.eof
+	    response.write "<tr>"
+		response.write "<td colspan='4' bgcolor='#CCFFCC'><font class='word'><b>"&num&"."&rs(1)&"</b></font></td>"
+		response.write "</tr>"
+		response.write "<tr>"
+		response.write "<td><input type='radio' name='same"&num&"' value='A'/><font class='word'>"&"A."&rs(2)&"</font></td>"
+		response.write "<td><input type='radio' name='same"&num&"' value='B'/><font class='word'>"&"B."&rs(3)&"</font></td>"
+		response.write "<td><input type='radio' name='same"&num&"' value='C'/><font class='word'>"&"C."&rs(4)&"</font></td>"
+		response.write "<td><input type='radio' name='same"&num&"' value='D'/><font class='word'>"&"D."&rs(5)&"</font></td>"
+		response.write "</tr>"
+		num=num+1
+	    rs.movenext
+	Loop 
+	response.Write "<tr><td colspan='2' align='center'><input type='submit' value='交卷' class='btn'></td>"
+	response.Write "<td colspan='2' align='center'><input type='reset' value='重置' class='btn'></td></tr>"
+	response.write "</table>"
+	response.Write "</form>"
+	num=num-1
+%>
+<%
+
+			function check()
+				for i=1 to num
+					if request("same"&i)="" then
+						check=0
+					else
+						check=1
+						exit for
+					end if
+				next
+			end function
+
+	'建立数组a()：学生答题
+	'        b()：正确答案
+	if check()=1 then
+	set rs=conn.execute(sql)
+	dim a(20),b(20),j
+	j=1
+	response.Write "您的答题结果是：<br>"
+	for i=1 to num
+		a(i)=request.Form("same"&i)
+		response.Write i&"."&a(i)&"&nbsp;&nbsp;&nbsp;&nbsp;"
+	next
+	response.Write "<br>====================================================================<br>"
+	Do While Not rs.eof
+		b(j)=rs(6)
+		j=j+1
+		rs.movenext
+	Loop
+	
+	'显示结果
+	j=1
+	response.Write "<br>您出错的题目是:"
+	for i=1 to num
+		if a(i)<>b(j) then
+			response.Write i&";"
+		end if
+		j=j+1
+	next
+	response.Write "<br>"
+	
+	response.Write "<br>正确答案：<Br>"
+	for j=1 to num
+			response.Write j&"."&b(j)&"&nbsp;&nbsp;&nbsp;"
+	next
+	End if
+%></td>
 					
 					
 				
